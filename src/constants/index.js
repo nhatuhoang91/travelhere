@@ -1,0 +1,5 @@
+export const HOME_PAGE_URL = '/'
+export const SIGNIN_PAGE_URL = '/sign-in'
+export const SIGNUP_PAGE_URL = '/sign-up'
+export const PROFILE_PAGE_URL = '/profile'
+export const USER_PAGE_URL = '/user'

@@ -1,0 +1,18 @@
+/*Css for SigninForm goes here*/
+.signin-form, .signup-form{
+    width: 25%;
+    min-width: 150pt;
+    max-width: 250pt;
+    height: 100pt;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: stretch;
+    background-color: silver;
+}
+
+input, button{
+    height: 20pt;
+    max-height: 25pt;
+    min-height: 15pt;
+}

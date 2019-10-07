@@ -1,0 +1,17 @@
+/*Css for HomePage goes here*/
+.home-page{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    scroll-behavior: smooth;
+    background-color: burlywood;
+}
+header{
+    flex-shrink: 0;
+}
+main{
+    flex: 1;
+}
+footer{
+    flex-shrink: 0;
+}

@@ -1,0 +1,6 @@
+/*Css for SignupPage goes here*/
+.signup-page {
+    display: flex;
+    justify-content: center;
+    background-color: aliceblue
+}
