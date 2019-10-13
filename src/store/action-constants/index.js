@@ -1,9 +1,22 @@
 const ActionTypes = {
-    /*App store actions*/
+    /**App store actions */
     CHANGE_AUTH_STATUS : 'CHANGE_AUTH_STATUS',
+    /**User store actions */
+    CHANGE_USER_DISPLAY_NAME : 'CHANGE_USER_DISPLAY_NAME', 
+    CHANGE_USER_ID : 'CHANGE_USER_ID',
+    CHANGE_USER_IMAGE_URL : 'CHANGE_USER_IMAGE_URL',
+    CHANGE_IS_VERIFIED : 'CHANGE_IS_VERIFIED',
 
-    /*Home page store actions*/
+    /**Home page store actions */
     FETCH_POSTS : 'FETCH_POSTS',
+
+    /**Sign up page store actions */
+    CHANGE_EMAIL_ERROR: 'CHANGE_EMAIL_ERROR',
+    CHANGE_PASSWORD_ERROR: 'CHANGE_PASSWORD_ERROR',
+    CHANGE_RETYPE_PASSWORD_ERROR: 'CHANGE_RETYPE_PASSWORD_ERROR',
+    CHANGE_USERNAME_ERROR : 'CHANGE_USERNAME_ERROR',
+    CHANGE_IS_WAITING: 'CHANGE_IS_WAITING',
+    CHANGE_SIGN_UP_ERROR : 'CHANGE_SIGN_UP_ERROR'
 }
 
 export default ActionTypes;

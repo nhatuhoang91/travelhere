@@ -1,7 +1,11 @@
 import {combineReducers} from 'redux'
 import appStoreReducer from './app-store/reducer'
+import signupPageStoreReducer from './sign-up-page-store/reducer'
+import userStoreReducer from './user-store/reducer'
 
-const reducer = combineReducers({
+const rootReducer = combineReducers({
     appStore : appStoreReducer,
+    userStore : userStoreReducer,
+    signupPageStore : signupPageStoreReducer
 });
-export default reducer;
+export default rootReducer;

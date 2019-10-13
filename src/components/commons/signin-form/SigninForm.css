@@ -3,16 +3,23 @@
     width: 25%;
     min-width: 150pt;
     max-width: 250pt;
-    height: 100pt;
+    min-height: 150pt;
+    max-height: 250pt;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: stretch;
     background-color: silver;
+    text-align: center;
 }
 
 input, button{
     height: 20pt;
     max-height: 25pt;
     min-height: 15pt;
+}
+
+.forgot-password, .create-new-account{
+    text-align: center;
+    font-size: 10px;
 }

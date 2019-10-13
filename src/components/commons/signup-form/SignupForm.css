@@ -1,5 +1,5 @@
 /*Css for SignupForm goes here*/
-.signin-form, .signup-form{
+.signup-form{
     width: 25%;
     min-width: 150pt;
     max-width: 250pt;
@@ -15,4 +15,8 @@ input, button{
     height: 20pt;
     max-height: 25pt;
     min-height: 15pt;
+}
+.sign-in{
+    text-align: center;
+    font-size: 10px;
 }

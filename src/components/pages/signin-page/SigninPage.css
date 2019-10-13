@@ -3,18 +3,25 @@
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    
     scroll-behavior: smooth;
     background-color: burlywood;
 }
 header{
-    flex-shrink: 0;
+   
     background-color: aliceblue;
 }
 main{
-    flex: 1;
+    /*flex-grow in sign-page*/
+    flex-grow: 1;
+
+    /*setup display flex for this main*/
+    display: flex;
+    flex-direction: column;
+    
     background-color: lavender;
 }
 footer{
-    flex-shrink: 0;
+    
     background-color: lemonchiffon;
 }

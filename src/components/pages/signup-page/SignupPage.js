@@ -1,12 +1,17 @@
 import React from 'react'
-import Main from '../../commons/main/Main.js'
+import MainSignupPage from './main/MainSignupPage.js'
 import Footer from '../../commons/footer/Footer.js'
-
+import './SignupPage.css'
 const SignupPage = ()=>{
     return (    
         <div className='signup-page'>
-            <Main/>
-            <Footer/>
+            <header></header>
+            <main>
+                <MainSignupPage/>
+            </main>
+            <footer>
+                <Footer/>
+            </footer>
         </div>
     );
 };
