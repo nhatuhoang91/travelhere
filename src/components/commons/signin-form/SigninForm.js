@@ -1,16 +1,56 @@
-import React from 'react'
-import {Link} from 'react-router-dom'
+import React, {Component} from 'react'
+import {Link, withRouter} from 'react-router-dom'
+import {connect} from 'react-redux'
 import {SIGNUP_PAGE_URL, FORGOT_PASSWORD_PAGE_URL} from '../../../constants'
+import {changeSigninError, changeIsWaiting} from '../../../store/sign-in-page-store/action'
+import {signinWithEmailAndPasswordThunk} from '../../../store/sign-in-page-store/action-thunk'
 import './SigninForm.css'
-const SigninForm = ({signinOrSignup}) => {
-    return(
-        <div className='signin-form'>
-            <input className='email-input' type='text' placeholder='Email'/>
-            <input className='password-input' type='text' placeholder='Password'/>
-            <button className='signin-button'>Sign in</button>
-            <Link className='forgot-password' to={FORGOT_PASSWORD_PAGE_URL}>Forgot password?</Link>
-            <Link className='create-new-account' to={SIGNUP_PAGE_URL}>Sign Up</Link>
-        </div>
-    )
+
+class SigninForm extends Component{
+    constructor(props){
+        super(props)
+        var _waitingStatus = ''
+        this.onSigninClicked = this.onSigninClicked.bind(this)
+        this.onSignupNavClicked = this.onSignupNavClicked.bind(this)
+    }
+    onSignupNavClicked(e){
+        e.preventDefault()
+        this.props.history.replace('/sign-up')
+    }
+    onSigninClicked(e){
+        e.preventDefault()
+        this.props.dispatch(changeSigninError(''))
+        this.props.dispatch(changeIsWaiting(true))
+        const {_email, _password} = this.refs
+        this.props.dispatch(signinWithEmailAndPasswordThunk(_email.value.trim(),
+        _password.value.trim(), () => this.props.history.replace('/')))
+    }
+    render(){
+        if(this.props.isWaiting){
+            this._waitingStatus = 'Just a second...'
+        }else{
+            this._waitingStatus = ''
+        }
+        return(
+            <div className='signin-form'>
+                <p className='signin-error'>{this.props.signinError}</p>
+                <input className='email-input' ref='_email' type='text' placeholder='Email'/>
+                <input className='password-input' ref='_password' type='text' placeholder='Password'/>
+                <button className='signin-button' onClick={this.onSigninClicked}>Sign in</button>
+                <Link className='forgot-password' to={FORGOT_PASSWORD_PAGE_URL}>Forgot password?</Link>
+                <Link className='create-new-account' onClick={this.onSignupNavClicked}>Sign Up</Link>
+                <p className='waiting-status'>{this._waitingStatus}</p>
+            </div>
+        ) 
+    }
 }
-export default SigninForm
+
+const mapStateToProps = (state) => {
+    return {
+        signinError : state.signinPageStore.signinError,
+        isWaiting: state.signinPageStore.isWaiting
+    };
+};
+
+const SigninFormContainer = withRouter(connect(mapStateToProps)(SigninForm));
+export default SigninFormContainer

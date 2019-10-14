@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {Link} from 'react-router-dom'
+import {Link, withRouter} from 'react-router-dom'
 import {SIGNIN_PAGE_URL} from '../../../constants'
-import {signupWithEmailAndPassword} from '../../../store/sign-up-page-store/action-thunk'
+import {signupWithEmailAndPasswordThunk} from '../../../store/sign-up-page-store/action-thunk'
 import {changeIsWaiting, 
     changeEmailError, 
     changePasswordError,
@@ -14,16 +14,17 @@ import './SignupForm.css'
 class SignupForm extends Component{
     constructor(props){
         super(props)
-        //var _signupError = ''
         var _waitingStatus = ''
-     //   var _emailError = ''
-      //  var _passwordError = ''
-       // var _retypePasswordError = ''
-        //var _usernameError = ''
         this.onSignupClicked = this.onSignupClicked.bind(this)
+        this.onSigninNavClicked = this.onSigninNavClicked.bind(this)
     }
     
-    onSignupClicked(){
+    onSigninNavClicked(e){
+        e.preventDefault()
+        this.props.history.replace('/sign-in')
+    }
+    onSignupClicked(e){
+        e.preventDefault()
         this.props.dispatch(changeEmailError(''))
         this.props.dispatch(changePasswordError(''))
         this.props.dispatch(changeRetypePasswordError(''))
@@ -74,15 +75,10 @@ class SignupForm extends Component{
             return
         }
         //If input validation passed. Sign up!
-        this.props.dispatch(signupWithEmailAndPassword(_email.value.trim(),
-        _password.value.trim(), _username.value.trim()))
+        this.props.dispatch(signupWithEmailAndPasswordThunk(_email.value.trim(),
+        _password.value.trim(), _username.value.trim(), () => this.props.history.replace('/')))
     }   
     render(){
-        if(this.props.signupError.length!==0){
-            this._signupError = this.props.signupError
-        }else{
-            this._signupError = ''
-        }
         if(this.props.isWaiting){
             this._waitingStatus = 'Just a second...'
         }else{
@@ -100,7 +96,7 @@ class SignupForm extends Component{
                 <p className='error'>{this.props.usernameError}</p>
                 <input className='user-name-input' ref='_username' type='text' placeholder='User display name'/>           
                 <button className='signup-button' onClick={this.onSignupClicked}>Sign up</button>
-                <Link className='sign-in' to={SIGNIN_PAGE_URL}>Already have an account?</Link>
+                <Link className='sign-in' onClick={this.onSigninNavClicked}>Already have an account?</Link>
                 <p className='waiting-status'>{this._waitingStatus}</p>
             </div>
         ) 
@@ -118,7 +114,7 @@ const mapStateToProps = (state) => {
     };
 };
 
-const SignupFormContainer = connect(mapStateToProps)(SignupForm);
+const SignupFormContainer = withRouter(connect(mapStateToProps)(SignupForm));
 export default SignupFormContainer
 
 const validateEmail = (email)=>{

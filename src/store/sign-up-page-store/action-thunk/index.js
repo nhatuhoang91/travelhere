@@ -2,9 +2,9 @@ import {AuthStatus} from '../../../types'
 import {signupWithEmailAndPasswordService} from '../../../services/signup-page-services'
 import {changeAuthStatusAction} from '../../app-store/action'
 import {changeUserDisplayName, changeUserId, changeIsVerified} from '../../user-store/action'
-import {changeIsWaiting, changeSignupError} from '../../sign-up-page-store/action'
+import {changeIsWaiting, changeSignupError} from '../action'
 
-export const signupWithEmailAndPassword = (email, password, username) => async dispatch => {
+export const signupWithEmailAndPasswordThunk = (email, password, username, cb) => async dispatch => {
     try{
         const user = await signupWithEmailAndPasswordService(email, password)
         //change user store
@@ -12,9 +12,7 @@ export const signupWithEmailAndPassword = (email, password, username) => async d
         dispatch(changeIsVerified(false))
         dispatch(changeUserDisplayName(username))
         dispatch(changeUserId(user.uid))
-
-        //change signup page store
-        dispatch(changeIsWaiting(false))
+        cb()
     }catch(e){
         switch (e.code){
             case 'auth/email-already-in-use':
@@ -32,6 +30,9 @@ export const signupWithEmailAndPassword = (email, password, username) => async d
             default:
                 dispatch(changeSignupError(e.message))
         }
+    }finally{
+        //change signup page store anyway
+        dispatch(changeIsWaiting(false))
     }
     
 }

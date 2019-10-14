@@ -3,7 +3,7 @@ import 'firebase/auth'
 import 'firebase/storage'
 
 var firebaseConfig = {
-    
+  
   };
 
   // Initialize Firebase

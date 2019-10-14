@@ -2,8 +2,7 @@
 .signup-form{
     width: 25%;
     min-width: 150pt;
-    max-width: 250pt;
-    height: 100pt;
+    max-width: 350pt;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -16,7 +15,16 @@ input, button{
     max-height: 25pt;
     min-height: 15pt;
 }
+.signup-button{
+    margin-top:10pt;
+}
 .sign-in{
+    margin-top:5pt;
     text-align: center;
     font-size: 10px;
+    text-decoration: underline;
+}
+.error, .waiting-status{
+    text-align: center;
+    font-size: 10px; 
 }
