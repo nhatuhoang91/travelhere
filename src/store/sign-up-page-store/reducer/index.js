@@ -1,5 +1,24 @@
 import {combineReducers} from 'redux'
+import {SignupStep} from '../../../types'
 import ActionTypes from '../../action-constants'
+
+const signupStepReducer = (state = SignupStep.STEP_1, action) =>{
+    switch (action.type){
+        case ActionTypes.CHANGE_SIGNUP_STEP:
+            return action.signupStep
+        default:
+            return state
+    }
+}
+
+const waitingTimeReducer = (state = 0, action) =>{
+    switch (action.type){
+        case ActionTypes.CHANGE_WAITING_TIME:
+            return action.time
+        default:
+            return state
+    }
+}
 
 const emailErrorReducer = (state = '', action) =>{
     switch (action.type){
@@ -56,12 +75,14 @@ const signupErrorReducer = (state = '', action) =>{
 }
 
 const signupPageStoreReducer = combineReducers({
+    signupStep : signupStepReducer,
     emailError : emailErrorReducer,
     passwordError : passwordErrorReducer,
     retypePasswordError : retypePasswordErrorReducer,
     usernameError : usernameErrorReducer,
     isWaiting : isWaitingReducer,
-    signupError : signupErrorReducer
+    signupError : signupErrorReducer,
+    waitingTime : waitingTimeReducer
 })
 
 export default signupPageStoreReducer

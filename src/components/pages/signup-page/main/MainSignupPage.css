@@ -1,1 +1,8 @@
 /*Css for MainSignupPage goes here*/
+.signup-page-main-content{
+    background-color:ivory;
+    flex-grow: 1;
+
+    display: flex;
+    justify-content: center;
+}

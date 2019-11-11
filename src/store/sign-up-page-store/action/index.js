@@ -1,41 +1,55 @@
 import ActionTypes from '../../action-constants'
 
-export const changeEmailError = (emailError) => {
+export const changeSignupStepAction = (signupStep) => {
+    return {
+        type: ActionTypes.CHANGE_SIGNUP_STEP,
+        signupStep
+    }
+}
+
+export const changeWaitingTimeAction = (time) => {
+    return {
+        type: ActionTypes.CHANGE_WAITING_TIME,  
+        time
+    }
+}
+
+export const changeEmailErrorAction = (emailError) => {
     return {
         type: ActionTypes.CHANGE_EMAIL_ERROR,
         emailError
     }
 }
 
-export const changePasswordError = (passwordError) => {
+export const changePasswordErrorAction = (passwordError) => {
     return {
         type: ActionTypes.CHANGE_PASSWORD_ERROR,
         passwordError
     }
 }
 
-export const changeRetypePasswordError = (retypePasswordError) => {
+export const changeRetypePasswordErrorAction = (retypePasswordError) => {
     return {
         type: ActionTypes.CHANGE_RETYPE_PASSWORD_ERROR,
         retypePasswordError
     }
 }
 
-export const changeUsernameError = (usernameError) => {
+export const changeUsernameErrorAction = (usernameError) => {
     return {
         type: ActionTypes.CHANGE_USERNAME_ERROR,
         usernameError
     }
 }
 
-export const changeIsWaiting = (isWaiting) => {
+export const changeIsWaitingAction = (isWaiting) => {
     return {
         type: ActionTypes.CHANGE_IS_WAITING,
         isWaiting
     }
 }
 
-export const changeSignupError = (signupError) => {
+export const changeSignupErrorAction = (signupError) => {
     return {
         type: ActionTypes.CHANGE_SIGN_UP_ERROR,
         signupError

@@ -12,6 +12,8 @@ import * as serviceWorker from './serviceWorker';
 const middlewares = [loggerMiddleware, thunk]
 const middlewaresEnhance = applyMiddleware(...middlewares)
 
+
+
 const store = createStore(rootReducer, middlewaresEnhance)
 const travelHere = (
     <Provider store = {store}>
@@ -21,7 +23,6 @@ const travelHere = (
     </Provider>
    
 )
-
 ReactDOM.render(travelHere, document.getElementById('root'))
 
 // If you want your app to work offline and load faster, you can change

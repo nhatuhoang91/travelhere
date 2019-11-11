@@ -7,21 +7,18 @@
     scroll-behavior: smooth;
     background-color: burlywood;
 }
-header{
-   
+.signup-page-header{
     background-color: aliceblue;
+    flex-grow: 5;
 }
-main{
+.signup-page-main{
     /*flex-grow in sign-page*/
-    flex-grow: 1;
-
-    /*setup display flex for this main*/
+    flex-grow: 85;
     display: flex;
     flex-direction: column;
-    
     background-color: lavender;
 }
-footer{
-    
+.signup-page-footer{
+    flex-grow: 10;
     background-color: lemonchiffon;
 }

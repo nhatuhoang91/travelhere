@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {Link, withRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {SIGNUP_PAGE_URL, FORGOT_PASSWORD_PAGE_URL} from '../../../constants'
-import {changeSigninError, changeIsWaiting} from '../../../store/sign-in-page-store/action'
+import {changeSigninErrorAction, changeIsWaitingAction} from '../../../store/sign-in-page-store/action'
 import {signinWithEmailAndPasswordThunk} from '../../../store/sign-in-page-store/action-thunk'
 import './SigninForm.css'
 
@@ -19,8 +19,8 @@ class SigninForm extends Component{
     }
     onSigninClicked(e){
         e.preventDefault()
-        this.props.dispatch(changeSigninError(''))
-        this.props.dispatch(changeIsWaiting(true))
+        this.props.dispatch(changeSigninErrorAction(''))
+        this.props.dispatch(changeIsWaitingAction(true))
         const {_email, _password} = this.refs
         this.props.dispatch(signinWithEmailAndPasswordThunk(_email.value.trim(),
         _password.value.trim(), () => this.props.history.replace('/')))
@@ -38,7 +38,7 @@ class SigninForm extends Component{
                 <input className='password-input' ref='_password' type='text' placeholder='Password'/>
                 <button className='signin-button' onClick={this.onSigninClicked}>Sign in</button>
                 <Link className='forgot-password' to={FORGOT_PASSWORD_PAGE_URL}>Forgot password?</Link>
-                <Link className='create-new-account' onClick={this.onSignupNavClicked}>Sign Up</Link>
+                <p className='create-new-account' onClick={this.onSignupNavClicked}>Sign Up</p>
                 <p className='waiting-status'>{this._waitingStatus}</p>
             </div>
         ) 

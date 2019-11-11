@@ -4,7 +4,7 @@ import './MainSignupPage.css'
 
 const MainSignupPage = () => {
     return(
-        <div className="main-content">
+        <div className="signup-page-main-content">
             <SignupFormContainer/>
         </div>
     )

@@ -5,11 +5,11 @@ import './SignupPage.css'
 const SignupPage = ()=>{
     return (    
         <div className='signup-page'>
-            <header></header>
-            <main>
+            <header className ='signup-page-header'/>
+            <main className='signup-page-main'>
                 <MainSignupPage/>
             </main>
-            <footer>
+            <footer className='signup-page-footer'>
                 <Footer/>
             </footer>
         </div>
